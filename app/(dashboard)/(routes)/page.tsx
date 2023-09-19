@@ -1,12 +1,9 @@
-'use client';
-import { Button } from '@/components/ui/button';
+import { UserButton } from '@clerk/nextjs';
 
-function HomePage() {
+export default function Home() {
   return (
-    <div className="">
-      <p>Esta pagina debe estar protegida</p>
+    <div>
+      <UserButton afterSignOutUrl="/" />
     </div>
   );
 }
-
-export default HomePage;
