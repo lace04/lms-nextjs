@@ -13,9 +13,9 @@ import {
   FormControl,
   FormDescription,
   FormField,
-  FormItem,
   FormLabel,
   FormMessage,
+  FormItem,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,7 +26,7 @@ const formSchema = z.object({
   }),
 });
 
-const createPage = () => {
+const CreatePage = () => {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,18 +39,17 @@ const createPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post('/api/courses', values);
-      router.push(`/teacher/courses/${res.data.id}`);
-    } catch (error) {
-      console.log("Something went wrong", error);
+      const response = await axios.post('/api/course', values);
+      router.push(`/teacher/courses/${response.data.id}`);
+    } catch {
       toast.error('Something went wrong');
     }
   };
 
   return (
     <div className='max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6'>
-      <div className=''>
-        <h1 className='text-2xl'>Nombre del Curso</h1>
+      <div>
+        <h1 className='text-2xl'>Nombre Curso</h1>
         <p className='text-sm text-slate-600'>
           ¿Cómo te gustaría llamar tu curso? No te preocupes, puedes cambiar
           esto más tarde.
@@ -65,31 +64,30 @@ const createPage = () => {
               name='title'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nombre Curso: </FormLabel>
+                  <FormLabel>Título del curso</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder='Nombre del Curso'
-                      className='w-full'
+                      placeholder="e.g. 'Advanced web development'"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    ¿Qué enseñarás en este curso?
+                  ¿Qué enseñarás en este curso?
                   </FormDescription>
-                  <FormMessage {...field} />
+                  <FormMessage />
                 </FormItem>
               )}
             />
-            <div className='flex items-center'>
+            <div className='flex items-center gap-x-2'>
               <Link href='/'>
-                <Button variant='ghost' type='button' className='mr-2'>
+                <Button type='button' variant='ghost'>
                   Cancelar
                 </Button>
-                <Button type='submit' disabled={!isValid}>
-                  Continuar
-                </Button>
               </Link>
+              <Button type='submit' disabled={!isValid || isSubmitting}>
+                Continuar
+              </Button>
             </div>
           </form>
         </Form>
@@ -98,4 +96,4 @@ const createPage = () => {
   );
 };
 
-export default createPage;
+export default CreatePage;
