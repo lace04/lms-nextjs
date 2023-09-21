@@ -93,7 +93,8 @@ export const ChapterAccessForm = ({
           {initialData.isFree ? (
             <>Este capítulo es gratuito para vista previa.</>
           ) : (
-            <>Este capítulo no es gratuito para vista previa.</>
+            <>Vista previa no disponible</>
+            // TODO: Agregar botón de compra (si el curso no es gratuito)
           )}
         </div>
       )}

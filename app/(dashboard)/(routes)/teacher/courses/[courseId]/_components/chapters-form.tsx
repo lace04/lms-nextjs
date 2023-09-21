@@ -90,10 +90,10 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
           {isCreating ? (
             <>Cancelar</>
           ) : (
-            <>
-              <PlusCircle className='h-4 w-4 mr-2' />
-              Editar
-            </>
+            <span className='flex hover:text-sky-800 items-center transition'>
+              <PlusCircle className='h-4 w-4 mr-2 ' />
+              Agregar capítulo
+            </span>
           )}
         </Button>
       </div>
