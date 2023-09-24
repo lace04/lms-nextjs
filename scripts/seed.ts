@@ -8,7 +8,7 @@ async function main() {
       data: [
         { name: 'Tecnología' },
         { name: 'Sistemas' },
-        { name: 'Contaduria' },
+        { name: 'Contaduría' },
         { name: 'Administración' },
         { name: 'Derecho' },
         { name: 'Ciencias' },

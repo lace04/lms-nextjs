@@ -22,7 +22,7 @@ const iconMap: Record<Category["name"], IconType> = {
   //El nombre de la categoria debe ser igual al nombre del icono y al nombre de la fila en la base de datos
   "Administración": FcBusinessman,
   "Ciencias": FcBiomass,
-  "Contaduria": FcFilingCabinet,
+  "Contaduría": FcFilingCabinet,
   "Derecho": FcBriefcase,
   "Ingeniería": FcEngineering,
   "Medicina": FcBiotech,
